@@ -38,20 +38,19 @@
      content: '';
      position: absolute;
      top: 0; left: 0; right: 0; bottom: 0;
-     background: rgba(8, 8, 10, 0.85); /* 85% de preto sobre a imagem */
+     background: rgba(8, 8, 10, 0.90); /* Aumentei para 90% para ficar mais "Dark/Pro" */
      z-index: -1;
-     position: fixed; /* Fixa o overlay para cobrir tudo */
+     position: fixed;
    }
 
    .page {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 80px 20px;
     position: relative;
-    z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+    z-index: 1;
    }
    
    .accent-text { color: #007bff; }
@@ -66,7 +65,7 @@
    .card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    border-radius: 12px; /* Bordas menos arredondadas para ficar mais "tech" */
     padding: 32px;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
@@ -79,37 +78,48 @@
     box-shadow: 0 20px 40px rgba(0, 123, 255, 0.15);
    }
    
+   /* Ajuste do Card de Destaque (Growth) */
    .highlight-card {
-    background: linear-gradient(135deg, rgba(0, 123, 255, 0.15) 0%, rgba(0, 86, 179, 0.1) 100%);
+    background: linear-gradient(180deg, rgba(0, 123, 255, 0.1) 0%, rgba(8, 8, 10, 1) 100%);
     border: 2px solid #007bff;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Isso impede que a faixa "vaze" */
+    display: flex;
+    flex-direction: column;
    }
    
-   .highlight-card::before {
-    content: 'RECOMENDADO';
+   .ribbon {
     position: absolute;
     top: 20px;
     right: -35px;
     background: #007bff;
     color: white;
-    padding: 4px 50px;
-    font-size: 12px;
-    font-weight: 700;
+    padding: 5px 40px;
+    font-size: 11px;
+    font-weight: 800;
     transform: rotate(45deg);
     letter-spacing: 1px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10;
+    text-transform: uppercase;
    }
 
    .cta-button {
     background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
     transition: all 0.3s ease;
+    border-radius: 8px;
+    font-weight: 800;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 16px 0;
    }
    
    .cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.6);
+    background: linear-gradient(90deg, #0069d9 0%, #004494 100%);
    }
 
    /* Animação suave */
@@ -127,38 +137,38 @@
  <body class="bg-image">
 
   <!-- Seção 1: Hero -->
-  <div class="page">
-   <div style="max-width: 1000px; width: 100%; text-align: center;" class="fade-in-up">
+  <div class="page" style="min-height: 90vh;">
+   <div style="max-width: 1200px; width: 100%; text-align: center;" class="fade-in-up">
     
     <div style="margin-bottom: 40px;">
-     <!-- LOGO IMAGEM -->
-     <img src="images/logo.png" alt="Legado Performance Digital" style="max-height: 80px; width: auto; margin: 0 auto; display: block;">
+     <!-- LOGO AUMENTADO -->
+     <img src="images/logo.png" alt="Legado Performance Digital" style="max-height: 140px; width: auto; margin: 0 auto; display: block; filter: drop-shadow(0 0 20px rgba(0,123,255,0.3));">
     </div>
     
     <div style="margin-bottom: 60px;">
-     <h1 class="gradient-text" style="font-size: clamp(40px, 5vw, 72px); font-weight: 900; line-height: 1.1; margin-bottom: 24px;">
+     <h1 class="gradient-text" style="font-size: clamp(40px, 5vw, 80px); font-weight: 900; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase;">
       A MÁQUINA DE VISITAS DIÁRIAS
      </h1>
-     <p style="font-size: clamp(18px, 2vw, 28px); font-weight: 600; color: #a0a0a0; letter-spacing: -0.5px;">
-      Implementação Comercial Completa em 48 Horas
+     <p style="font-size: clamp(18px, 2vw, 24px); font-weight: 500; color: #a0a0a0; letter-spacing: 1px;">
+      IMPLEMENTAÇÃO COMERCIAL COMPLETA EM 48 HORAS
      </p>
     </div>
 
     <!-- Stats Rápidos -->
-    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 60px;">
-        <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm border border-white/10">
-            <span class="block text-3xl font-bold text-blue-500">+ R$ 10 Mi</span>
-            <span class="text-sm text-gray-400">Gerados desde 2020</span>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
+        <div class="bg-white/5 rounded-xl p-6 backdrop-blur-md border border-white/10 w-full sm:w-auto min-w-[200px]">
+            <span class="block text-4xl font-black text-blue-500 mb-1">+ R$ 10 Mi</span>
+            <span class="text-sm text-gray-400 font-bold uppercase tracking-wider">Gerados desde 2020</span>
         </div>
-        <div class="bg-white/5 rounded-lg p-4 backdrop-blur-sm border border-white/10">
-            <span class="block text-3xl font-bold text-blue-500">48h</span>
-            <span class="text-sm text-gray-400">Prazo de Implementação</span>
+        <div class="bg-white/5 rounded-xl p-6 backdrop-blur-md border border-white/10 w-full sm:w-auto min-w-[200px]">
+            <span class="block text-4xl font-black text-blue-500 mb-1">48h</span>
+            <span class="text-sm text-gray-400 font-bold uppercase tracking-wider">Prazo de Entrega</span>
         </div>
     </div>
 
-    <div class="card" style="margin-top: 40px; display: inline-block; width: 100%; max-width: 800px;">
-     <p style="font-size: 14px; color: #007bff; font-weight: 700; letter-spacing: 2px; margin-bottom: 12px; text-transform: uppercase;">Especialistas em</p>
-     <h3 style="font-size: clamp(24px, 3vw, 32px); font-weight: 800; line-height: 1.3;">
+    <div class="card" style="margin-top: 20px; display: inline-block; width: 100%; max-width: 900px; border-color: rgba(0,123,255,0.4);">
+     <p style="font-size: 12px; color: #007bff; font-weight: 800; letter-spacing: 3px; margin-bottom: 16px; text-transform: uppercase;">Especialistas Nacionais em</p>
+     <h3 style="font-size: clamp(20px, 3vw, 36px); font-weight: 800; line-height: 1.3; color: white;">
       Empresas de Pisos Laminados, Vinílicos e Esquadrias
      </h3>
     </div>
@@ -166,218 +176,264 @@
   </div>
 
   <!-- Seção 2: O Problema e a Solução Real -->
-  <div class="page" style="background: rgba(0,0,0,0.2);">
+  <div class="page" style="background: rgba(0,0,0,0.3);">
    <div style="max-width: 1200px; width: 100%;">
     
-    <!-- A Dor -->
-    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; text-align: center; margin-bottom: 60px;">
-      O Problema <span class="accent-text">Real</span>
-    </h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 80px;">
-     <div class="card hover:bg-red-900/10 border-red-500/20">
-      <div style="font-size: 32px; margin-bottom: 16px;">📉</div>
-      <h4 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Instabilidade</h4>
-      <p style="color: #999;">Meses bons e ruins sem previsibilidade nenhuma.</p>
-     </div>
-     <div class="card hover:bg-red-900/10 border-red-500/20">
-      <div style="font-size: 32px; margin-bottom: 16px;">💤</div>
-      <h4 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Comercial Ocioso</h4>
-      <p style="color: #999;">Vendedores esperando o telefone tocar ao invés de vender.</p>
-     </div>
-     <div class="card hover:bg-red-900/10 border-red-500/20">
-      <div style="font-size: 32px; margin-bottom: 16px;">🌫️</div>
-      <h4 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Leads Fantasmas</h4>
-      <p style="color: #999;">Contatos que chegam e nunca respondem.</p>
-     </div>
-    </div>
-
     <!-- A Solução (Com a Imagem do CRM) -->
-    <div class="highlight-card" style="padding: 60px; text-align: left; background: linear-gradient(135deg, rgba(0, 123, 255, 0.05) 0%, rgba(0,0,0,0.8) 100%);">
-        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-            <div style="flex: 1; min-width: 300px;">
-                <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; margin-bottom: 30px;">
-                    Legado <span class="accent-text">Performance</span>
-                </h2>
+    <div style="padding: 0; text-align: left;">
+        <!-- Card Gigante Estilo Landing Page -->
+        <div style="background: linear-gradient(135deg, rgba(10, 10, 12, 0.95) 0%, rgba(8, 8, 10, 0.98) 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; box-shadow: 0 0 50px rgba(0,0,0,0.5);">
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
                 
-                <p style="font-size: 20px; line-height: 1.6; color: #e5e5e5; margin-bottom: 30px;">
-                    Para você realmente ter <strong>resultados concretos em vendas todos os dias</strong>, você não pode olhar apenas para o final. Você tem que dominar os processos anteriores da venda:
-                </p>
+                <!-- Texto -->
+                <div style="flex: 1; min-width: 300px;">
+                    <span class="text-blue-500 font-bold tracking-widest text-sm uppercase mb-4 block">Metodologia Exclusiva</span>
+                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; margin-bottom: 30px; line-height: 1.1;">
+                        Legado <span class="accent-text">Performance</span>
+                    </h2>
+                    
+                    <p style="font-size: 18px; line-height: 1.6; color: #ccc; margin-bottom: 30px;">
+                        Para você realmente ter <strong>resultados concretos em vendas todos os dias</strong>, você não pode olhar apenas para o final. Você tem que dominar os processos anteriores da venda:
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-blue-500 mb-1"><i data-lucide="map-pin" size="32"></i></div>
+                            <strong class="text-white text-xl">Visitas</strong>
+                            <span class="text-gray-500 text-sm">Volume diário consistente.</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-blue-500 mb-1"><i data-lucide="phone" size="32"></i></div>
+                            <strong class="text-white text-xl">Contatos</strong>
+                            <span class="text-gray-500 text-sm">Ligação ativa + WhatsApp.</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-blue-500 mb-1"><i data-lucide="flame" size="32"></i></div>
+                            <strong class="text-white text-xl">Urgência</strong>
+                            <span class="text-gray-500 text-sm">Filtro de intenção de compra.</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div class="text-blue-500 mb-1"><i data-lucide="database" size="32"></i></div>
+                            <strong class="text-white text-xl">CRM</strong>
+                            <span class="text-gray-500 text-sm">Controle total do funil.</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p style="font-size: 20px; font-weight: 600; color: white; font-style: italic;">
+                            <span class="text-blue-500">"</span> Se você não controla as visitas, não controla o faturamento. <span class="text-blue-500">"</span>
+                        </p>
+                    </div>
+                </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                    <div class="flex items-start gap-3">
-                        <div class="bg-blue-600/20 p-2 rounded text-blue-500"><i data-lucide="map-pin"></i></div>
-                        <div>
-                            <strong class="block text-white text-lg">Visitas</strong>
-                            <span class="text-gray-400">Quantas você faz por dia?</span>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="bg-blue-600/20 p-2 rounded text-blue-500"><i data-lucide="phone"></i></div>
-                        <div>
-                            <strong class="block text-white text-lg">Contatos</strong>
-                            <span class="text-gray-400">Recomendamos ligação ativa.</span>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="bg-blue-600/20 p-2 rounded text-blue-500"><i data-lucide="flame"></i></div>
-                        <div>
-                            <strong class="block text-white text-lg">Urgência</strong>
-                            <span class="text-gray-400">Filtrar quem quer comprar agora.</span>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="bg-blue-600/20 p-2 rounded text-blue-500"><i data-lucide="database"></i></div>
-                        <div>
-                            <strong class="block text-white text-lg">CRM</strong>
-                            <span class="text-gray-400">Organização total dos leads.</span>
+                <!-- IMAGEM CRM -->
+                <div style="flex: 1.2; min-width: 320px;">
+                    <div style="position: relative;">
+                        <!-- Efeito de brilho atrás -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: #007bff; filter: blur(100px); opacity: 0.2; z-index: 0;"></div>
+                        
+                        <div style="position: relative; z-index: 1; background: rgba(20, 20, 25, 0.8); padding: 12px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                            <!-- Cabeçalho fake do browser -->
+                            <div style="display: flex; gap: 8px; margin-bottom: 12px; padding-left: 8px;">
+                                <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></div>
+                                <div style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></div>
+                                <div style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f;"></div>
+                            </div>
+                            <img src="images/crm.jpg" alt="Dashboard CRM e Controle de Leads" style="width: 100%; border-radius: 8px; display: block;">
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- IMAGEM CRM -->
-            <div style="flex: 1; min-width: 300px;">
-                <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                    <img src="images/crm.jpg" alt="Dashboard CRM e Controle de Leads" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    <p style="text-align: center; color: #666; font-size: 12px; margin-top: 10px;">Visualização do controle de leads com urgência</p>
-                </div>
-            </div>
-        </div>
-            
-        <div style="margin-top: 40px; border-left: 4px solid #007bff; padding-left: 20px;">
-            <p style="font-size: 24px; font-weight: 700; color: white;">
-                "Se você não controla as visitas, não controla o faturamento."
-            </p>
         </div>
     </div>
-
    </div>
   </div>
 
-  <!-- Seção 3: Equipe & Autoridade -->
+  <!-- Seção 3: Equipe (LAYOUT NOVO - SEM CÍRCULOS) -->
   <div class="page">
-   <div style="max-width: 1000px; width: 100%;">
+   <div style="max-width: 1200px; width: 100%;">
     <h2 style="font-size: 48px; font-weight: 900; text-align: center; margin-bottom: 60px;">Quem Faz <span class="accent-text">Acontecer</span></h2>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+    <!-- GRID DE 4 COLUNAS (Lado a Lado no Desktop) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+        
         <!-- Card Leonardo -->
-        <div class="card" style="display: flex; align-items: center; gap: 20px;">
-            <div style="width: 80px; height: 80px; background: #007bff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 28px;">LC</div>
-            <div>
-                <h3 style="font-size: 24px; font-weight: 800;">Leonardo Chagas</h3>
-                <p style="color: #007bff; font-weight: 600;">Fundador</p>
-                <p style="color: #999; font-size: 14px;">Estrategista Comercial</p>
-            </div>
+        <div class="card group hover:border-blue-500/50 transition-all duration-300">
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #007bff, #0056b3); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: white; margin-bottom: 20px;">LC</div>
+            <h3 style="font-size: 20px; font-weight: 800; color: white;">Leonardo Chagas</h3>
+            <p style="color: #007bff; font-weight: 700; margin-bottom: 8px; font-size: 14px; text-transform: uppercase;">Fundador</p>
+            <p style="color: #999; font-size: 14px; line-height: 1.5;">Estrategista Comercial e criador da metodologia.</p>
         </div>
 
         <!-- Card Julio -->
-        <div class="card" style="display: flex; align-items: center; gap: 20px; border-color: rgba(0,123,255,0.3);">
-            <div style="width: 80px; height: 80px; background: #1a1a1a; border: 2px solid #007bff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 28px; color: #007bff;">JC</div>
-            <div>
-                <h3 style="font-size: 24px; font-weight: 800;">Julio C. Cardone</h3>
-                <p style="color: #007bff; font-weight: 600;">Gestor de Tráfego</p>
-                <p style="color: #999; font-size: 14px;">Especialista em Performance</p>
-            </div>
+        <div class="card group hover:border-blue-500/50 transition-all duration-300" style="background: rgba(0, 123, 255, 0.05); border-color: rgba(0, 123, 255, 0.3);">
+            <div style="width: 60px; height: 60px; background: transparent; border: 2px solid #007bff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: #007bff; margin-bottom: 20px;">JC</div>
+            <h3 style="font-size: 20px; font-weight: 800; color: white;">Julio C. Cardone</h3>
+            <p style="color: #007bff; font-weight: 700; margin-bottom: 8px; font-size: 14px; text-transform: uppercase;">Performance</p>
+            <p style="color: #999; font-size: 14px; line-height: 1.5;">Gestor de Tráfego e Especialista em Escala.</p>
         </div>
         
         <!-- Card Juliana -->
-        <div class="card" style="display: flex; align-items: center; gap: 20px;">
-            <div style="width: 80px; height: 80px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 28px;">JU</div>
-            <div>
-                <h3 style="font-size: 24px; font-weight: 800;">Juliana</h3>
-                <p style="color: #007bff; font-weight: 600;">Closer & SDR</p>
-                <p style="color: #999; font-size: 14px;">Rainha do Glamour (e do CRM)</p>
-            </div>
+        <div class="card group hover:border-blue-500/50 transition-all duration-300">
+            <div style="width: 60px; height: 60px; background: #222; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: #666; margin-bottom: 20px;">JU</div>
+            <h3 style="font-size: 20px; font-weight: 800; color: white;">Juliana</h3>
+            <p style="color: #007bff; font-weight: 700; margin-bottom: 8px; font-size: 14px; text-transform: uppercase;">Closer & SDR</p>
+            <p style="color: #999; font-size: 14px; line-height: 1.5;">Qualificação de leads e gestão de CRM.</p>
         </div>
 
-         <!-- Card Lud -->
-         <div class="card" style="display: flex; align-items: center; gap: 20px;">
-            <div style="width: 80px; height: 80px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 28px;">LU</div>
-            <div>
-                <h3 style="font-size: 24px; font-weight: 800;">Lud</h3>
-                <p style="color: #007bff; font-weight: 600;">Especialista</p>
-                <p style="color: #999; font-size: 14px;">Tráfego Pago</p>
-            </div>
+         <!-- Card Ludielson -->
+         <div class="card group hover:border-blue-500/50 transition-all duration-300">
+            <div style="width: 60px; height: 60px; background: #222; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; color: #666; margin-bottom: 20px;">LU</div>
+            <h3 style="font-size: 20px; font-weight: 800; color: white;">Ludielson</h3>
+            <p style="color: #007bff; font-weight: 700; margin-bottom: 8px; font-size: 14px; text-transform: uppercase;">Especialista</p>
+            <p style="color: #999; font-size: 14px; line-height: 1.5;">Tráfego Pago e Otimização de Campanhas.</p>
         </div>
     </div>
    </div>
   </div>
 
-  <!-- Seção 4: Planos -->
-  <div class="page" style="background: rgba(0,0,0,0.2);">
+  <!-- Seção 4: Planos (CORRIGIDO) -->
+  <div class="page" style="padding-bottom: 120px;">
    <div style="max-width: 1400px; width: 100%;">
     <h2 style="font-size: 48px; font-weight: 900; text-align: center; margin-bottom: 20px;">Planos de <span class="accent-text">Resultados</span></h2>
-    <p style="text-align: center; margin-bottom: 60px; color: #999;">Alinhamento total entre preços e criativos de alta conversão.</p>
+    <p style="text-align: center; margin-bottom: 80px; color: #999;">Alinhamento total entre preços e criativos de alta conversão.</p>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; align-items: center;">
      
      <!-- Plano Starter -->
-     <div class="card flex flex-col">
+     <div class="card flex flex-col h-full hover:scale-105 transition-transform">
       <div style="text-align: center; margin-bottom: 32px;">
-       <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 12px;">STARTER</h3>
+       <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 12px;">STARTER</h3>
        <p style="color: #999;">3 Meses de Aceleração</p>
       </div>
       <div style="text-align: center; margin-bottom: 32px;">
        <div class="text-4xl font-black text-white mb-2">R$ 6.000</div>
        <p style="color: #666; font-size: 14px;">Investimento Total</p>
       </div>
-      <div class="border-t border-white/10 pt-8 flex-grow">
+      <div class="border-t border-white/10 pt-8 mb-8 flex-grow">
        <ul class="space-y-4">
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">CRM Semanal</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">Relatórios Mensais</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">Implementação em 48h</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">CRM Semanal</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">Relatórios Mensais</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">Implementação em 48h</span></li>
        </ul>
       </div>
-      <a href="https://wa.me/5511992432882" class="cta-button w-full block text-center py-4 rounded-lg mt-8 font-bold text-white no-underline">CONTRATAR</a>
+      <a href="https://wa.me/5511992432882" class="cta-button" style="background: transparent; border: 1px solid #333; color: white;">CONTRATAR</a>
      </div>
 
-     <!-- Plano Growth (Destaque) -->
-     <div class="highlight-card flex flex-col transform scale-105 z-10">
-      <div style="text-align: center; margin-bottom: 32px;">
+     <!-- Plano Growth (CORRIGIDO - HIGHLIGHT) -->
+     <div class="highlight-card" style="transform: scale(1.05); z-index: 10; box-shadow: 0 0 40px rgba(0, 123, 255, 0.2);">
+      <div class="ribbon">RECOMENDADO</div>
+      
+      <div style="text-align: center; margin-bottom: 32px; margin-top: 10px;">
        <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 12px; color: #007bff;">GROWTH</h3>
-       <p style="color: #999;">6 Meses de Escala</p>
+       <p style="color: #ccc;">6 Meses de Escala</p>
       </div>
+      
       <div style="text-align: center; margin-bottom: 32px;">
-       <div class="text-5xl font-black text-blue-500 mb-2">R$ 10.800</div>
+       <div class="text-5xl font-black text-white mb-2">R$ 10.800</div>
        <p style="color: #666; font-size: 14px;">Investimento Total</p>
-       <span class="inline-block bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm mt-2 font-bold">Economia de R$ 1.200</span>
+       <div style="margin-top: 10px;">
+           <span style="background: rgba(0, 255, 0, 0.1); color: #4ade80; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700;">Economia de R$ 1.200</span>
+       </div>
       </div>
-      <div class="border-t border-blue-500/30 pt-8 flex-grow">
-       <ul class="space-y-4">
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-white font-bold">Dashboard em Tempo Real</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">CRM 2x por Semana</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">Relatórios Quinzenais</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">Suporte Premium</span></li>
+      
+      <div style="border-top: 1px solid rgba(0, 123, 255, 0.3); pt-8 mb-8 flex-grow padding-top: 30px; margin-bottom: 30px;">
+       <ul class="space-y-4" style="text-align: left; padding: 0 20px;">
+        <li class="flex items-center gap-3"><div class="bg-blue-600 rounded-full p-1"><i data-lucide="check" class="text-white w-4 h-4"></i></div> <span class="text-white font-bold">Dashboard em Tempo Real</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">CRM 2x por Semana</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">Relatórios Quinzenais</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">Suporte Premium</span></li>
        </ul>
       </div>
-      <a href="https://wa.me/5511992432882" class="cta-button w-full block text-center py-4 rounded-lg mt-8 font-bold text-white no-underline bg-blue-600 hover:bg-blue-500">CONTRATAR AGORA</a>
+      
+      <a href="https://wa.me/5511992432882" class="cta-button">CONTRATAR AGORA</a>
      </div>
 
      <!-- Plano Scale -->
-     <div class="card flex flex-col">
+     <div class="card flex flex-col h-full hover:scale-105 transition-transform">
       <div style="text-align: center; margin-bottom: 32px;">
-       <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 12px;">SCALE</h3>
+       <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 12px;">SCALE</h3>
        <p style="color: #999;">12 Meses de Dominação</p>
       </div>
       <div style="text-align: center; margin-bottom: 32px;">
        <div class="text-4xl font-black text-white mb-2">R$ 18.000</div>
        <p style="color: #666; font-size: 14px;">Investimento Total</p>
-       <span class="inline-block bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm mt-2 font-bold">Economia de R$ 6.000</span>
+       <div style="margin-top: 10px;">
+        <span style="background: rgba(0, 255, 0, 0.1); color: #4ade80; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700;">Economia de R$ 6.000</span>
+    </div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex-grow">
+      <div class="border-t border-white/10 pt-8 mb-8 flex-grow">
        <ul class="space-y-4">
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-white font-bold">CRM Diário</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-white font-bold">Suporte VIP 24/7</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">Relatórios Semanais</span></li>
-        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500"></i> <span class="text-gray-300">Dashboard em Tempo Real</span></li>
+        <li class="flex items-center gap-3"><div class="bg-blue-600 rounded-full p-1"><i data-lucide="check" class="text-white w-4 h-4"></i></div> <span class="text-white font-bold">CRM Diário</span></li>
+        <li class="flex items-center gap-3"><div class="bg-blue-600 rounded-full p-1"><i data-lucide="check" class="text-white w-4 h-4"></i></div> <span class="text-white font-bold">Suporte VIP 24/7</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">Relatórios Semanais</span></li>
+        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> <span class="text-gray-300">Dashboard em Tempo Real</span></li>
        </ul>
       </div>
-      <a href="https://wa.me/5511992432882" class="cta-button w-full block text-center py-4 rounded-lg mt-8 font-bold text-white no-underline">CONTRATAR</a>
+      <a href="https://wa.me/5511992432882" class="cta-button" style="background: transparent; border: 1px solid #333; color: white;">CONTRATAR</a>
      </div>
 
     </div>
    </div>
   </div>
+
+  <!-- RODAPÉ PRO -->
+  <footer style="background: #000; border-top: 1px solid rgba(255,255,255,0.1); padding: 80px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px;">
+            
+            <!-- Coluna Logo -->
+            <div>
+                <img src="images/logo.png" alt="Legado Performance" style="max-height: 80px; margin-bottom: 24px; opacity: 0.8;">
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">
+                    Especialistas em transformar processos comerciais em máquinas de vendas previsíveis.
+                </p>
+                <div style="margin-top: 24px; display: flex; gap: 16px;">
+                    <a href="#" class="text-gray-500 hover:text-blue-500"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-blue-500"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-blue-500"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Coluna Links -->
+            <div>
+                <h4 style="color: white; font-weight: 800; margin-bottom: 24px; font-size: 16px;">EMPRESA</h4>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li><a href="#" class="text-gray-500 hover:text-blue-500 text-sm no-underline transition-colors">Sobre Nós</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-blue-500 text-sm no-underline transition-colors">Cases de Sucesso</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-blue-500 text-sm no-underline transition-colors">Metodologia</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-blue-500 text-sm no-underline transition-colors">Carreiras</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna Contato -->
+            <div>
+                <h4 style="color: white; font-weight: 800; margin-bottom: 24px; font-size: 16px;">CONTATO</h4>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                    <li class="flex items-center gap-3 text-sm text-gray-500">
+                        <i data-lucide="mail" size="16"></i> atendimento@legadomidia.com
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-gray-500">
+                        <i data-lucide="phone" size="16"></i> (11) 99243-2882
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-gray-500">
+                        <i data-lucide="map-pin" size="16"></i> São Paulo, SP
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px; padding-top: 30px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            <p style="color: #444; font-size: 12px;">&copy; 2025 Legado Performance Digital. Todos os direitos reservados.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" class="text-gray-600 text-xs hover:text-white">Termos de Uso</a>
+                <a href="#" class="text-gray-600 text-xs hover:text-white">Privacidade</a>
+            </div>
+        </div>
+    </div>
+  </footer>
 
   <script>
     lucide.createIcons();
